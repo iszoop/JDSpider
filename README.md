@@ -59,6 +59,7 @@ class JSPageMiddleware(object):
 这里用了chormedriver来请求网页，更换spider的时候，同时需要更改spider.name；
 
 **使用redies**
+
 拷贝scrapy_redis到主目录，需要将JD.py继承的类改为RedisSpider;
 
 启动爬虫之后，需要在redis lpush一个JD:start_url作为起始URL(除了爬取手机信息，爬取其他商品的信息可以lpush当前商品的搜索url作为起始url)
