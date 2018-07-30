@@ -59,5 +59,5 @@ class JSPageMiddleware(object):
 这里用了chormedriver来请求网页，更换spider的时候，同时需要更改spider.name；
 
 **使用redies**
-拷贝scrapy_redis到主目录，需要到将JD.py基础的类改为RedisSpider;
+拷贝scrapy_redis到主目录，需要将JD.py继承的类改为RedisSpider;
 
