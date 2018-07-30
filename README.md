@@ -1,7 +1,6 @@
 
 京东手机信息爬虫
 ====
-## JD爬虫
 
 *JD.py*
 
@@ -35,3 +34,30 @@
 ```
 
 parse方法用来获取搜索页面的主页以及定义翻页逻辑
+
+**middleware.py**
+```python
+class JSPageMiddleware(object):
+    # 通过chorme请求动态网页
+    def process_request(self,request,spider):
+        if spider.name == "JD":
+            spider.browser.get(request.url)
+            import time
+            time.sleep(1)
+            print("访问{0}".format(request.url))
+            import re
+            match_search = re.match(".*(search).*",request.url)
+            if match_search:
+                for i in range(2):
+                    spider.browser.execute_script(
+                        "window.scrollTo(0,document.body.scrollHeight); var lenOfPage=document.body.scrollHeight;return lenOfPage;")
+                    time.sleep(2)
+            return HtmlResponse(url=spider.browser.current_url, body=spider.browser.page_source, encoding="utf-8",
+                            request=request)
+```
+
+这里用了chormedriver来请求网页，更换spider的时候，同时需要更改spider.name；
+
+**使用redies**
+拷贝scrapy_redis到主目录，需要到将JD.py基础的类改为RedisSpider;
+
