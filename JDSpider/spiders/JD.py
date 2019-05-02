@@ -100,8 +100,8 @@ class JdSpider(RedisSpider):
     #
     #
     #     browser.find_element_by_css_selector(".login-form  a[clstag='pageclick|keycount|login_pc_201804112|10']").click()
-    #     browser.find_element_by_css_selector("#loginname").send_keys("17338581253")
-    #     browser.find_element_by_css_selector("#nloginpwd").send_keys("sep26th94")
+    #     browser.find_element_by_css_selector("#loginname").send_keys("12222")
+    #     browser.find_element_by_css_selector("#nloginpwd").send_keys("****")
     #     browser.find_element_by_css_selector("#loginsubmit").click()
     #
     #     time.sleep(5)
